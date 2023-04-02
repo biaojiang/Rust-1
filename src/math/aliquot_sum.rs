@@ -3,7 +3,7 @@
 /// For example: The aliquot sum of 6 is (1 + 2 + 3) = 6, and that of 15 is
 /// (1 + 3 + 5) = 9
 /// Wikipedia article on Aliquot Sum: https://en.wikipedia.org/wiki/Aliquot_sum
-/*
+
 pub fn aliquot_sum(number: u64) -> u64 {
     if number == 1 || number == 0 {
         return 0;
@@ -18,24 +18,6 @@ pub fn aliquot_sum(number: u64) -> u64 {
 
     sum
 }
-*/
-
-// more efficient method
-pub fn aliquot_sum(number: u64) -> u64 {
-    let sqrt = f64::sqrt(number as f64).ceil() as u64;
-    let mut sum = 0;
-    for i in 1..sqrt {
-        if number % i == 0 {
-            sum += i;
-            if i != number / i {
-                sum += number / i;
-            }
-        }
-    }
-    sum - number
-}
-
-
 
 #[cfg(test)]
 mod tests {
